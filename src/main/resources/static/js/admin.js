@@ -1,24 +1,66 @@
 const $ = (selector) => document.querySelector(selector);
 const state = { projects: [], skills: [], messages: [], profile: null };
 
+
 async function api(path, options = {}) {
+  const method = (options.method || "GET").toUpperCase();
+
+  // Read Spring Security's CSRF cookie.
+  const csrfCookie = document.cookie
+    .split("; ")
+    .find(cookie => cookie.startsWith("XSRF-TOKEN="));
+
+  const csrfToken = csrfCookie
+    ? decodeURIComponent(csrfCookie.substring("XSRF-TOKEN=".length))
+    : null;
+
+  const headers = {
+    ...(options.body ? { "Content-Type": "application/json" } : {}),
+    ...(options.headers || {})
+  };
+
+  // Send CSRF token for state-changing requests.
+  if (!["GET", "HEAD", "OPTIONS", "TRACE"].includes(method)) {
+    if (!csrfToken) {
+      throw new Error(
+        "CSRF token missing. Refresh the admin page and try again."
+      );
+    }
+    headers["X-XSRF-TOKEN"] = csrfToken;
+  }
+
   const response = await fetch(path, {
     ...options,
-    headers: {
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
-      ...(options.headers || {})
-    }
+    method,
+    headers,
+    credentials: "same-origin"
   });
 
   if (response.status === 401) {
-    throw new Error("Admin authentication required. Refresh and enter your admin username/password in the browser prompt.");
+    throw new Error(
+      "Admin authentication required. Refresh and enter your admin username/password in the browser prompt."
+    );
   }
+
+  if (response.status === 403) {
+    throw new Error(
+      "Access denied. Refresh the admin page; the CSRF token may be missing or expired."
+    );
+  }
+
   if (response.status === 204) return null;
 
-  const data = await response.json().catch(() => ({ message: "Unexpected server response." }));
-  if (!response.ok) throw new Error(data.message || `Request failed (${response.status})`);
+  const data = await response.json().catch(() => ({
+    message: "Unexpected server response."
+  }));
+
+  if (!response.ok) {
+    throw new Error(data.message || `Request failed (${response.status})`);
+  }
+
   return data;
 }
+
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, char => ({

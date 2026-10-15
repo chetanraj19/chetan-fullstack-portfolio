@@ -108,11 +108,33 @@ $("#contactForm").addEventListener("submit", async event => {
   label.textContent = "Sending…";
   const payload = Object.fromEntries(new FormData(form).entries());
   try {
-    const response = await fetch(`${API}/contact`, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(payload)
-    });
+
+const csrfCookie = document.cookie
+  .split("; ")
+  .find(cookie => cookie.startsWith("XSRF-TOKEN="));
+
+const csrfToken = csrfCookie
+  ? decodeURIComponent(
+      csrfCookie.substring("XSRF-TOKEN=".length)
+    )
+  : null;
+
+if (!csrfToken) {
+  throw new Error(
+    "Security token missing. Refresh the page and try again."
+  );
+}
+
+const response = await fetch(`${API}/contact`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-XSRF-TOKEN": csrfToken
+  },
+  credentials: "same-origin",
+  body: JSON.stringify(payload)
+});
+
     const result = await response.json();
     if (!response.ok) throw new Error(result.message || "Please check your details and try again.");
     status.textContent = "✓ " + result.message;

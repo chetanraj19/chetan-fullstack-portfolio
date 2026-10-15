@@ -1,5 +1,12 @@
 target/
 .idea/
 *.iml
-.evn.*
+
+# Environment variables and secrets
+.env
+.env.*
 !.env.example
+
+# Local backups and scripts
+*.bak
+run-portfolio.ps1
