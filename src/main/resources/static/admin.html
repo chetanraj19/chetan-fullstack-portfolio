@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#09090f">
+    <title>Portfolio Admin — Chetan</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .admin-wrap {
+          padding: 54px 0 90px;
+        }
+
+        .admin-head {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          align-items: center;
+          margin-bottom: 35px;
+        }
+
+        .admin-head h1 {
+          font-size: clamp(32px, 5vw, 54px);
+          letter-spacing: -2px;
+          margin: 0;
+        }
+
+        .admin-sub {
+          color: var(--muted);
+          font-size: 13px;
+          line-height: 1.8;
+        }
+
+        .admin-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+
+        .admin-panel {
+          border: 1px solid var(--line);
+          background: #11111b;
+          padding: 24px;
+          min-width: 0;
+        }
+
+        .admin-panel h2 {
+          font-size: 19px;
+          margin: 0 0 20px;
+        }
+
+        .admin-form label {
+          display: block;
+          font-size: 11px;
+          color: #aaa7bb;
+          margin: 12px 0 6px;
+        }
+
+        .admin-form input,
+        .admin-form textarea,
+        .admin-form select {
+          width: 100%;
+          padding: 12px;
+          background: #09090f;
+          color: #f4f3fa;
+          border: 1px solid var(--line);
+          border-radius: 2px;
+          outline: none;
+        }
+
+        .admin-form input:focus,
+        .admin-form textarea:focus,
+        .admin-form select:focus {
+          border-color: var(--purple);
+        }
+
+        .admin-form textarea {
+          resize: vertical;
+        }
+
+        .admin-form .button {
+          margin-top: 16px;
+        }
+
+        .admin-list {
+          display: grid;
+          gap: 10px;
+        }
+
+        .admin-item {
+          padding: 14px;
+          border: 1px solid var(--line);
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 12px;
+        }
+
+        .admin-item strong {
+          font-size: 12px;
+        }
+
+        .admin-item small {
+          display: block;
+          color: var(--muted);
+          margin-top: 5px;
+          font-size: 10px;
+        }
+
+        .admin-actions {
+          display: flex;
+          gap: 6px;
+          flex: none;
+        }
+
+        .small-button {
+          background: transparent;
+          border: 1px solid var(--line);
+          color: #ddd;
+          padding: 7px 9px;
+          cursor: pointer;
+          font-size: 10px;
+        }
+
+        .small-button.danger {
+          color: #ffaaaa;
+        }
+
+        .admin-status {
+          font-size: 12px;
+          color: var(--cyan);
+          min-height: 18px;
+          margin: 12px 0;
+        }
+
+        .admin-status.error {
+          color: #ff9696;
+        }
+
+        .message-item {
+          display: block;
+        }
+
+        .message-item p {
+          font-size: 12px;
+          color: #aaa7bb;
+          line-height: 1.7;
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+        }
+
+        .admin-top-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: #b5b1c8;
+}
+
+        .admin-top-links a:hover {
+          color: var(--cyan);
+        }
+
+        @media (max-width: 760px) {
+          .admin-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .admin-head {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+}
+/* ===== Admin readability improvements ===== */
+
+/* Intro text */
+.admin-sub {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Panel headings */
+.admin-panel h2 {
+  font-size: 21px;
+}
+
+/* Form labels */
+.admin-form label {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Inputs and dropdowns */
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Project and skill titles */
+.admin-item strong {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Secondary details */
+.admin-item small {
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Edit and Delete buttons */
+.small-button {
+  font-size: 12px;
+  padding: 8px 11px;
+}
+
+/* Contact inbox messages */
+.message-item p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Status messages */
+.admin-status {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Main refresh button and form buttons */
+.admin-head .button,
+.admin-form .button {
+  font-size: 14px;
+}
+
+/* Keep navigation usable on smaller screens */
+@media (max-width: 760px) {
+  .admin-top-links {
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    font-size: 12px;
+  }
+}
+
+/* Refresh data button color fix */
+#reloadButton {
+    background: #171522;
+    color: #f4f3fa;
+    border: 1px solid #9b7bff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#reloadButton:hover {
+    background: #29203f;
+    border-color: #7be7e7;
+    color: #ffffff;
+}
+
+#reloadButton:focus-visible {
+    outline: 2px solid #7be7e7;
+    outline-offset: 3px;
+}
+
+
+    </style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="nav-wrap">
+    <nav class="nav container">
+        <a class="brand" href="/">
+            <span class="brand-mark">C<span>.</span></span>
+            <span>CHETAN<span class="brand-muted">/ADMIN</span></span>
+        </a>
+        <div class="admin-top-links">
+            <a href="/">VIEW PORTFOLIO ↗</a>
+            <a href="#profile">PROFILE</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#skills">SKILLS</a>
+        </div>
+    </nav>
+</header>
+
+<main class="container admin-wrap">
+    <div class="admin-head">
+        <div>
+            <p class="section-label">PRIVATE WORKSPACE / 001</p>
+            <h1>Portfolio <span class="gradient-text">manager.</span></h1>
+            <p class="admin-sub">
+                Manage projects, skills and incoming messages. Changes are stored in MySQL and reflected on the public portfolio.
+            </p>
+        </div>
+        <button class="button button-quiet" id="reloadButton">
+            Refresh data ↻
+        </button>
+    </div>
+
+    <p id="globalStatus" class="admin-status" role="status"></p>
+
+    <div class="admin-grid">
+        <!-- Profile Section -->
+        <section class="admin-panel" id="profile" style="grid-column: 1 / -1;">
+            <h2>Profile &amp; Contact Settings</h2>
+            <p class="admin-sub">
+                Update your public identity and links here. These values are saved in MySQL and shown on the portfolio.
+            </p>
+            <form class="admin-form" id="profileForm">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                    <div>
+                        <label>Full name</label>
+                        <input name="name" maxlength="120" required>
+                    </div>
+                    <div>
+                        <label>Professional title</label>
+                        <input name="role" maxlength="120" required placeholder="Java Backend Developer">
+                    </div>
+                    <div>
+                        <label>Public email</label>
+                        <input name="email" type="email" maxlength="150">
+                    </div>
+                    <div>
+                        <label>Location</label>
+                        <input name="location" maxlength="150" placeholder="Bhopal, India">
+                    </div>
+                    <div>
+                        <label>GitHub profile URL</label>
+                        <input name="githubUrl" type="url" maxlength="500" placeholder="https://github.com/yourname">
+                    </div>
+                    <div>
+                        <label>LinkedIn profile URL</label>
+                        <input name="linkedinUrl" type="url" maxlength="500" placeholder="https://linkedin.com/in/yourname">
+                    </div>
+                    <div>
+                        <label>Availability status</label>
+                        <input name="availability" maxlength="300" placeholder="Open to internships and entry-level roles">
+                    </div>
+                    <div>
+                        <label>Target roles</label>
+                        <input name="targetRoles" maxlength="500" placeholder="Java Developer · Backend Intern">
+                    </div>
+                    <div>
+                        <label>Resume URL (optional)</label>
+                        <input name="resumeUrl" type="url" maxlength="500" placeholder="https://...">
+                    </div>
+                </div>
+                <label>Short bio</label>
+                <textarea name="bio" rows="4" maxlength="2000" placeholder="Write a short professional introduction"></textarea>
+                <button class="button button-primary" type="submit">
+                    Save profile &amp; contact details ↗
+                </button>
+            </form>
+            <p class="admin-status" id="profileStatus" role="status"></p>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="admin-panel" id="projects">
+            <h2>Projects <span class="brand-muted" id="projectCount">—</span></h2>
+            <form class="admin-form" id="projectForm">
+                <input type="hidden" name="id">
+                <label>Project title</label>
+                <input name="title" maxlength="120" required placeholder="e.g. Time Capsule API">
+
+                <label>Category</label>
+                <select name="category">
+                    <option>Backend</option>
+                    <option>Full Stack</option>
+                    <option>Frontend</option>
+                    <option>AI / ML</option>
+                </select>
+
+                <label>Description</label>
+                <textarea name="description" rows="3" maxlength="2000" required placeholder="What does this project do?"></textarea>
+
+                <label>Technologies (comma separated)</label>
+                <input name="stack" maxlength="500" placeholder="Java, Spring Boot, MySQL">
+
+                <label>GitHub URL</label>
+                <input name="github" type="url" maxlength="500" placeholder="https://github.com/yourname/repo">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                        <label>Icon</label>
+                        <input name="icon" maxlength="20" placeholder="⌘">
+                    </div>
+                    <div>
+                        <label>Status</label>
+                        <select name="status">
+                            <option>Featured</option>
+                            <option>Completed</option>
+                            <option>In progress</option>
+                            <option>Planned</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="button button-primary" type="submit" id="projectSubmit">Add project ↗</button>
+                <button class="small-button" type="button" id="projectCancel" hidden>Cancel edit</button>
+            </form>
+            <p class="admin-status" id="projectStatus" role="status"></p>
+            <div class="admin-list" id="projectList"></div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="admin-panel" id="skills">
+            <h2>Skills <span class="brand-muted" id="skillCount">—</span></h2>
+            <form class="admin-form" id="skillForm">
+                <input type="hidden" name="id">
+                <label>Skill name</label>
+                <input name="name" maxlength="80" required placeholder="e.g. Spring Boot">
+
+                <label>Category</label>
+                <select name="group">
+                    <option>Backend</option>
+                    <option>Database</option>
+                    <option>Frontend</option>
+                    <option>Tools</option>
+                    <option>AI / ML</option>
+                </select>
+
+                <label>Self-assessed level (0–100)</label>
+                <input name="level" type="number" min="0" max="100" value="70" required>
+
+                <button class="button button-primary" type="submit" id="skillSubmit">Add skill ↗</button>
+                <button class="small-button" type="button" id="skillCancel" hidden>Cancel edit</button>
+            </form>
+            <p class="admin-status" id="skillStatus" role="status"></p>
+            <div class="admin-list" id="skillList"></div>
+        </section>
+
+        <!-- Contact Inbox Section -->
+        <section class="admin-panel" style="grid-column: 1 / -1;">
+            <h2>Contact inbox <span class="brand-muted" id="messageCount">—</span></h2>
+            <div class="admin-list" id="messageList"></div>
+        </section>
+    </div>
+</main>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>

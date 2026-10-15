@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090f">
+  <meta name="description" content="Chetan Raj Gour — Java backend developer, MCA student, and software builder.">
+  <title>Chetan Gour — Java Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="brand" href="#home" aria-label="Chetan home"><span class="brand-mark">C<span>.</span></span><span>CHETAN<span class="brand-muted">/DEV</span></span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span><span id="availability">AVAILABLE FOR OPPORTUNITIES</span></div>
+        <p class="hero-kicker">HELLO, WORLD. I'M</p>
+        <h1 id="heroName">Chetan Raj Gour<span class="period">.</span></h1>
+        <div class="role-line"><span class="role-prefix">I build</span> <span id="typedRole">backend systems</span><span class="caret">_</span></div>
+        <p class="hero-description"><span id="heroBio">MCA student and aspiring Java backend developer turning ideas into reliable, thoughtful software. Focused on clean APIs, databases, and products that solve real problems.</span></p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore my work <span>↘</span></a>
+          <a class="button button-quiet" href="#contact">Get in touch <span>↗</span></a>
+        </div>
+        <div class="hero-meta"><span><i class="tiny-line"></i> BASED IN INDIA</span><span>JAVA · SPRING BOOT · REST API</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Abstract animated orb">
+        <div class="orb-scene">
+          <div class="orb-grid"></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div>
+          <div class="core-orb"><div class="orb-shine"></div><div class="orb-core"></div></div>
+          <span class="float-tag tag-java"><span class="tag-icon">☕</span> JAVA <b>21</b></span>
+          <span class="float-tag tag-api"><span class="tag-icon">⌘</span> REST APIs</span>
+          <span class="float-tag tag-db"><span class="tag-icon">▤</span> DATABASES</span>
+          <span class="visual-caption">BUILDING THINGS THAT MATTER <span>✳</span></span>
+        </div>
+        <div class="side-index">01 / INTRODUCTION</div>
+      </div>
+      <div class="scroll-cue"><span></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="ticker" aria-label="Technology focus"><div class="ticker-track"><span>JAVA DEVELOPMENT ✳</span><span>SPRING BOOT ✳</span><span>RESTFUL APIS ✳</span><span>DATABASE DESIGN ✳</span><span>CONTINUOUS LEARNING ✳</span><span>JAVA DEVELOPMENT ✳</span><span>SPRING BOOT ✳</span><span>RESTFUL APIS ✳</span><span>DATABASE DESIGN ✳</span></div></section>
+
+    <section class="section container" id="about">
+      <div class="section-heading"><div><p class="section-label">01 — A LITTLE ABOUT ME</p><h2>Curious mind.<br><span class="muted-heading">Builder's mindset.</span></h2></div><p class="section-aside">I like understanding how things work — from a clean interface to the systems powering it.</p></div>
+      <div class="about-grid">
+        <div class="about-card about-main reveal"><div class="card-index">PROFILE / 001</div><div class="about-symbol">✳</div><h3>Learning by<br>building.</h3><p>I'm pursuing my MCA at LNCT Bhopal and working toward becoming a strong Java backend developer. I enjoy designing APIs, working with relational databases, and building full-stack projects that connect the dots.</p><a href="#contact" class="text-link">Have a project in mind? <span>↗</span></a></div>
+        <div class="about-stack reveal"><div class="mini-card"><span class="mini-icon">⌘</span><div><h4>Backend first</h4><p>Java · Spring Boot · REST</p></div><span class="mini-arrow">↗</span></div><div class="mini-card"><span class="mini-icon">▤</span><div><h4>Data minded</h4><p>SQL · MySQL · JPA</p></div><span class="mini-arrow">↗</span></div><div class="mini-card"><span class="mini-icon">◎</span><div><h4>Always learning</h4><p>DSA · System design · Testing</p></div><span class="mini-arrow">↗</span></div><div class="education-note"><span class="note-dot"></span><div><small>CURRENTLY STUDYING</small><strong>Master of Computer Applications</strong><span>LNCT · Bhopal, India</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills"><div class="container">
+      <div class="section-heading"><div><p class="section-label">02 — MY TOOLKIT</p><h2>Tools of the <span class="gradient-text">trade.</span></h2></div><p class="section-aside">A growing toolkit for building robust applications from the API layer to the database.</p></div>
+      <div class="filter-row" id="skillFilters"><button class="filter-chip active" data-filter="All">All skills</button><button class="filter-chip" data-filter="Backend">Backend</button><button class="filter-chip" data-filter="Database">Database</button><button class="filter-chip" data-filter="Frontend">Frontend</button><button class="filter-chip" data-filter="Tools">Tools</button></div>
+      <div class="skills-grid" id="skillsGrid"><div class="loading-card">Loading skills from Spring Boot API…</div></div>
+      <p class="skill-note"><span>↗</span> Skill levels are self-assessments and will evolve as I build more.</p>
+    </div></section>
+
+    <section class="section container" id="projects">
+      <div class="section-heading"><div><p class="section-label">03 — SELECTED WORK</p><h2>Ideas into <span class="gradient-text">reality.</span></h2></div><p class="section-aside">Projects are where concepts become practical experience. More experiments are always in progress.</p></div>
+      <div class="project-toolbar"><span><span class="pulse-dot"></span> PROJECT ARCHIVE <span id="projectCount">—</span></span><span class="mono">2025 — 2026</span></div>
+      <div class="projects-grid" id="projectsGrid"><div class="loading-card">Loading projects from Spring Boot API…</div></div>
+    </section>
+
+    <section class="statement container reveal"><div class="statement-mark">“</div><p>Good software isn't just what you see.<br><span>It's what you can rely on.</span></p><div class="statement-foot"><span>MY DEVELOPMENT PHILOSOPHY</span><span>✳</span></div></section>
+
+    <section class="section contact-section" id="contact"><div class="container">
+      <div class="section-heading"><div><p class="section-label">04 — YOUR TURN</p><h2>Let's make<br><span class="gradient-text">something real.</span></h2></div><p class="section-aside">Have an opportunity, an idea, or just want to talk tech? My inbox is open.</p></div>
+      <div class="contact-grid">
+        <div class="contact-info"><p class="contact-intro" id="contactIntro">I'm open to entry-level Java developer roles, internships, collaborations, and interesting projects.</p><a class="contact-link" id="emailLink" href="mailto:chetan.gour@example.com"><span class="contact-icon">↗</span><span><small>EMAIL ME</small><strong id="contactEmail">chetan.gour@example.com</strong></span></a><a class="contact-link" id="githubLink" href="https://github.com/" target="_blank" rel="noreferrer"><span class="contact-icon">⌘</span><span><small>CODE & PROJECTS</small><strong id="contactGithub">GitHub profile ↗</strong></span></a><a class="contact-link" id="linkedinLink" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><span class="contact-icon">in</span><span><small>LET'S CONNECT</small><strong id="contactLinkedin">LinkedIn profile ↗</strong></span></a><div class="availability-card"><span class="pulse-dot"></span><div><strong id="availabilityTitle">Open to opportunities</strong><p id="targetRoles">Java Developer · Backend Intern · Associate Software Engineer</p></div></div></div>
+        <form class="contact-form" id="contactForm"><div class="form-top"><span>DROP A MESSAGE</span><span class="mono">FORM / 001</span></div>
+          <label for="name">Your name</label><input id="name" name="name" placeholder="How should I call you?" maxlength="100" required>
+          <label for="email">Email address</label><input id="email" name="email" type="email" placeholder="you@example.com" maxlength="150" required>
+          <label for="subject">Subject</label><input id="subject" name="subject" placeholder="What's this about?" maxlength="120" required>
+          <label for="message">Your message</label><textarea id="message" name="message" rows="4" minlength="10" maxlength="3000" placeholder="Tell me a little about it..." required></textarea>
+          <button class="button button-primary submit-button" type="submit"><span id="submitLabel">Send message</span><span>↗</span></button><p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form-foot">Your message is submitted securely to this site's Spring Boot API.</p>
+        </form>
+      </div>
+    </div></section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark">C<span>.</span></span><span>CHETAN<span class="brand-muted">/DEV</span></span></a><span class="footer-center">DESIGNED WITH CURIOSITY · BUILT WITH JAVA</span><a href="#home" class="back-top">BACK TO TOP ↑</a><span class="footer-copy">© <span id="year"></span> CHETAN RAJ GOUR</span></div></footer>
+  <script src="/js/app.js"></script>
+</body>
+</html>
